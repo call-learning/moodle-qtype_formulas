@@ -146,6 +146,7 @@ class qtype_formulas extends question_type {
             debugging("Formulas question ID {$question->id} was missing an options record. Using default.", DEBUG_DEVELOPER);
 
             $question->options = $this->create_default_options($question);
+            $question->options->id = $DB->insert_record('qtype_formulas_options', $question->options);
         }
 
         parent::get_question_options($question);
